@@ -1,46 +1,24 @@
-// import logo from 'src/logo.svg';
-// import '../src/App.css';
-import React, { Component, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Navbar.css"
+import { Nav, Navbar, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 
 const NavbarComponent = () => {
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container-fluid">
-        <img src="images/glogo.png" />
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Categorías
-              </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a className="dropdown-item" href="#">Ropa</a></li>
-                <li><a className="dropdown-item" href="#">Juguetes</a></li>
-                <li><a className="dropdown-item" href="#">Tecnología</a></li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Ofertas</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Quiénes Somos</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Ayuda</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar.Brand href="#home"><img src="images/glogo.png" /></Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto nav-menu">
+          <NavDropdown title="Categorías" id="collasible-nav-dropdown">
+            <NavDropdown.Item href="#action/3.1">Tecnología</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">Moda</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">Hogar y Electrodomésticos</NavDropdown.Item>
+          </NavDropdown>
+          <Nav.Link href="#features">Ofertas</Nav.Link>
+          <Nav.Link href="#pricing">Ayuda</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   )
 
   // const [click, setClick] = useState(false)
