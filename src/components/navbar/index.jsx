@@ -1,6 +1,8 @@
-import "./Navbar.css"
-import { Nav, Navbar, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
+import "./Navbar.css";
 
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import CartWidget from '../CartWidget/CartWidget';
+import ItemListContainer from '../ItemListContainer/ItemListContainer';
 const NavbarComponent = () => {
 
   return (
@@ -18,36 +20,8 @@ const NavbarComponent = () => {
           <Nav.Link href="#pricing">Ayuda</Nav.Link>
         </Nav>
       </Navbar.Collapse>
+      <CartWidget />
     </Navbar>
   )
-
-  // const [click, setClick] = useState(false)
-
-  // // Establezco el valor opuesto del clicked cada vez que hacen click
-
-  // const clickOpuesto = () => setClick(!click)
-  // return (
-  //   <>
-  //     <nav classNameName="NavbarItems">
-  //       <img classNameName="navbar-logo" src="images/glogo.png" />
-  //       <div classNameName="menu-icon" onClick={clickOpuesto}>
-  //         <i classNameName={click ? 'fas fa-times' : 'fas fa-bars'}></i>
-  //       </div>
-  //       <ul classNameName={click ? 'nav-menu active' : 'nav-menu'}>
-  //         {MenuItems.map((item, index) => {
-  //           return (
-  //             <li key={index}>
-  //               <a classNameName={item.cName} href={item.url}>
-  //                 {item.title}
-  //               </a>
-  //             </li>
-  //           )
-  //         })}
-  //       </ul>
-  //     </nav>
-  //   </>
-  // );
-  // // }
 }
-
 export default NavbarComponent;
