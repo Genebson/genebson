@@ -1,0 +1,55 @@
+import React, { useState } from 'react';
+import Display from './display/Display';
+import Button from './button/Button';
+import Add from './add/Add';
+
+const style = {
+  margin: '100px auto',
+  width: 300,
+  height: 150,
+  backgroundColor: 'black',
+  boxSizing: 'border-box',
+}
+
+const upper = {
+  display: 'flex',
+  justifyContent: 'space-around'
+}
+
+const lower = {
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center'
+}
+
+const ItemCount = ({ onAdd, stock, inicial }) => {
+
+  let [counter, setCounter] = useState(inicial);
+
+  const handleClick = (amount) => {
+    return (
+      () => {
+        let total = (amount < 1) ? 1 : amount; //no puede ser menor a 0
+        let limiter = (total > stock) ? stock : total; //no puede superar el stock
+        setCounter(limiter);
+      }
+    )
+  }
+
+  let prop = { counter, setCounter } //Con este operador paso counter y setcounter
+
+  return (
+    <div className="itemCount" {...{ style }}>
+      <div className="upper" style={upper}>
+        <Button suma={false} onClick={handleClick} {...prop} />
+        <Display valor={counter} />
+        <Button suma={true} onClick={handleClick} {...prop} />
+      </div>
+      <div className="lower" style={lower}>
+        <Add onAdd={onAdd} {...{ counter }} />
+      </div>
+    </div>
+  );
+}
+
+export default ItemCount;

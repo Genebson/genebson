@@ -1,8 +1,8 @@
 import "./Navbar.css";
-
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import CartWidget from '../CartWidget/CartWidget';
 import ItemListContainer from '../ItemListContainer/ItemListContainer';
+
 const NavbarComponent = () => {
 
   return (
