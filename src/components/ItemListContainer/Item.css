@@ -1,0 +1,57 @@
+.card-title {
+  text-align: center;
+  font-family: 'Roboto';
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.card-text {
+  text-align: center;
+  font-family: 'Roboto';
+}
+
+.btn-cart {
+  margin-left: 95px;
+}
+
+.card-price {
+  color:teal;
+}
+
+.card-cuota {
+  font-size: 0.7rem;
+  margin-top: 5px;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.card-image {
+  position: relative;
+}
+
+.fa-heart {
+  color: red;
+  font-size: 1.3rem;
+  margin-left: 270px;
+  margin-top: 12px;
+  position: absolute;
+}
+
+.fa-star {
+  color: rgb(52, 131, 250);
+}
+
+.card-body {
+  /* background:linear-gradient(135deg, #CE9FFC 0%,#7367F0 100%); */
+}
+
+.info {
+
+}
+/* .footer-card {
+  display: flex;
+  align-content: center;
+} */

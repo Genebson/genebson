@@ -18,7 +18,8 @@ const App = () => {
     <>
       <NavbarComponent />
       <ItemListContainer greeting={"Bienvenidos a todos!"} />
-      <ItemCount onAdd={handleAdd} stock={stock} inicial={1} />
+      {/* <ItemCount onAdd={handleAdd} stock={stock} inicial={1} /> */}
+
     </>
   );
 }
