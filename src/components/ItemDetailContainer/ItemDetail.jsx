@@ -1,9 +1,10 @@
 import Item from '../ItemListContainer/Item';
 
-const ItemDetail = ({ Item }) => {
+const ItemDetail = ({ detail }) => {
   return (
     <>
-      <Item products={products} />
+      <h1>DETALLES DEL PRODUCTO</h1>
+      <Item detail={detail} />
     </>
   );
 };

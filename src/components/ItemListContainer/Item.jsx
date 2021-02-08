@@ -1,7 +1,7 @@
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import './Item.css'
 
-const Item = ({ product: { name, img, price, cuotas, stock, description } }) => {
+const Item = ({ detail: { name, img, price, cuotas, stock, description } }) => {
   return (
     <Container>
       <Row>
