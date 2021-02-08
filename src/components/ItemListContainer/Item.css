@@ -44,13 +44,10 @@
   color: rgb(52, 131, 250);
 }
 
-.card-body {
-  /* background:linear-gradient(135deg, #CE9FFC 0%,#7367F0 100%); */
-}
+/* .card-body {
+  background:linear-gradient(135deg, #CE9FFC 0%,#7367F0 100%);
+} */
 
-.info {
-
-}
 /* .footer-card {
   display: flex;
   align-content: center;

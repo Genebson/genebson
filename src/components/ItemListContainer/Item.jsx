@@ -5,7 +5,7 @@ const Item = ({ product: { name, img, price, cuotas, stock, description } }) => 
   return (
     <Container>
       <Row>
-        <Col lg={4}>
+        <Col lg={2}>
           <Card style={{ width: '20rem' }}>
             <a href="#"><i class="far fa-heart"></i></a>
             <Card.Img className="card-img" variant="top" src={img} />
