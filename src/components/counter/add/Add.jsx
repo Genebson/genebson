@@ -1,15 +1,16 @@
+import { Button } from 'react-bootstrap';
+
 const style = {
-  width: 120,
+  width: 300,
   height: 50,
   cursor: 'pointer',
-  backgroundColor: 'green',
   marginTop: '10px'
 }
 
 
 const Add = ({ onAdd, counter }) => {
   return (
-    <button {...{ style }} onClick={onAdd(counter)}>Agregar<i class="fas fa-shopping-cart"></i></button>
+    <Button variant="danger" {...{ style }} onClick={onAdd(counter)}>Agregar al Carrito</Button >
   );
 }
 
