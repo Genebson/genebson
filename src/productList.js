@@ -5,7 +5,7 @@ const productList = [
     price: 13999,
     img: 'https://i.ibb.co/ZgRVYj9/air1.jpg',
     description: 'NIKE SPORTWEAR AIR FORCE PARA MUJER',
-    stock: 100,
+    cantidad: 100,
     cuotas: '6 CUOTAS DE $2333'
   },
   {
@@ -14,7 +14,7 @@ const productList = [
     price: 11399,
     img: 'https://i.ibb.co/KXLLyd8/icon1.jpg',
     description: 'BUZO CANGURO NIKE SPORTWEAR PARA MUJER',
-    stock: 100,
+    cantidad: 100,
     cuotas: '12 CUOTAS DE $949,9'
   },
   {
@@ -23,7 +23,7 @@ const productList = [
     price: 11989,
     img: 'https://i.ibb.co/rb80JZL/micro1.jpg',
     description: 'BUZO CIERRE COMPLETO NIKE SPORTWEAR ACG PARA HOMBRE',
-    stock: 100,
+    cantidad: 100,
     cuotas: '12 COUTAS DE $998,8'
   },
   {
@@ -32,7 +32,7 @@ const productList = [
     price: 8349,
     img: 'https://i.ibb.co/vcmP8bY/puma1.jpg',
     description: 'CAMPERA PUMA SPORTSTYLE PRIME PARA MUJER',
-    stock: 100,
+    cantidad: 100,
     cuotas: '3 CUOTAS DE $2783'
   },
   {
@@ -41,7 +41,7 @@ const productList = [
     price: 11999,
     img: 'https://i.ibb.co/Twj09Kz/pumaz1.jpg',
     description: 'ZAPATILLAS PUMA SPORTSTYLE PRIME PARA MUJER',
-    stock: 100,
+    cantidad: 100,
     cuotas: '12 CUOTAS DE $999,9'
   },
   {
@@ -50,7 +50,7 @@ const productList = [
     price: 2399,
     img: 'https://i.ibb.co/x5jv26P/pumap1.jpg',
     description: 'PELOTA PUMA TEAMSPORT DE FUTBOL',
-    stock: 100,
+    cantidad: 100,
     cuotas: '6 CUOTAS DE $399,8'
   },
 ]

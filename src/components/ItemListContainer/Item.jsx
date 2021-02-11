@@ -1,7 +1,20 @@
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import './Item.css'
+import ItemCount from '../counter/ItemCount';
 
 const Item = ({ detail: { name, img, price, cuotas, stock, description } }) => {
+
+  // let cantidad = 15
+
+  // const handleAdd = (counter) => {
+  //   return () => {
+  //     alert(`Se han agregado ${counter} productos`)
+  //   }
+  // }
+
+  // { seAgregoProducto ? <TerminarCompra /> : <AgregarAlCarrito /> }
+
+
   return (
     <Container>
       <Row>
@@ -14,11 +27,6 @@ const Item = ({ detail: { name, img, price, cuotas, stock, description } }) => {
               <Card.Text className="card-description">{description}</Card.Text>
               <Card.Title className="card-price">${price}</Card.Title>
               <Card.Text className="card-cuota">{cuotas}</Card.Text>
-              {/* <div className="info">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div> */}
               <Button className="btn-cart" variant="danger">Comprar</Button>
             </Card.Body>
           </Card>

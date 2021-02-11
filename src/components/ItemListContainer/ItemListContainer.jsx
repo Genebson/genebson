@@ -11,7 +11,7 @@ const override = css`
 
 //la funcion de useEffect es hacer algo en algún momento especifico
 
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = ({ }) => {
   //el que hago es esto
   const [products, setProducts] = useState([])
   // const [isLoading, setIsLoading] = useState([false])
@@ -43,7 +43,6 @@ const ItemListContainer = ({ greeting }) => {
   }
   return (
     <>
-      <h1 className="h1">{greeting}</h1>
       <ItemList products={products} />
     </>
   );
