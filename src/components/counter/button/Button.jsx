@@ -1,19 +1,23 @@
+import { Button } from 'react-bootstrap';
+
 const style = {
   width: 50,
   height: 50,
   marginTop: '25px',
-  cursor: 'pointer'
+  cursor: 'pointer',
+  fontWeight: '900',
 }
 
-const Button = ({ suma, onClick, counter, setCounter }) => {
+
+const Buttons = ({ suma, onClick, counter }) => {
 
   let sign = suma ? '+' : '-';
 
   let amount = suma ? (counter + 1) : (counter - 1);
 
   return (
-    <button onClick={onClick(amount)}{...{ style }}>{sign}</button >
+    <Button variant="danger" onClick={onClick(amount)}{...{ style }}>{sign}</Button >
   );
 }
 
-export default Button;
+export default Buttons;

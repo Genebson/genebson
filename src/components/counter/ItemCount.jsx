@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Display from './display/Display';
-import Button from './button/Button';
+import Buttons from './button/Button';
 import Add from './add/Add';
 
 const style = {
   margin: '100px auto',
   width: 300,
   height: 150,
-  backgroundColor: 'black',
+  // backgroundColor: 'black',
   boxSizing: 'border-box',
 }
 
@@ -41,9 +41,9 @@ const ItemCount = ({ onAdd, stock, inicial }) => {
   return (
     <div className="itemCount" {...{ style }}>
       <div className="upper" style={upper}>
-        <Button suma={false} onClick={handleClick} {...prop} />
+        <Buttons suma={false} onClick={handleClick} {...prop} />
         <Display valor={counter} />
-        <Button suma={true} onClick={handleClick} {...prop} />
+        <Buttons suma={true} onClick={handleClick} {...prop} />
       </div>
       <div className="lower" style={lower}>
         <Add onAdd={onAdd} {...{ counter }} />

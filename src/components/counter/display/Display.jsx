@@ -1,8 +1,10 @@
+import { Button } from 'react-bootstrap'
+
 const style = {
   width: 50,
   height: 50,
-  backgroundColor: 'white',
-  margin: '5px auto',
+  // backgroundColor: 'grey',
+  margin: '25px auto',
   textAlign: 'center',
   display: 'flex',
   justifyContent: 'center',
@@ -12,7 +14,7 @@ const style = {
 
 const Display = ({ valor }) => {
   return (
-    <div className="display"{...{ style }}>{valor}</div>
+    <Button variant="dark" className="display"{...{ style }}>{valor}</Button>
   );
 }
 
