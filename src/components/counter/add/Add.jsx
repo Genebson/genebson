@@ -1,7 +1,7 @@
 import { Button } from 'react-bootstrap';
 
 const style = {
-  width: 300,
+  width: 400,
   height: 50,
   cursor: 'pointer',
   marginTop: '10px'

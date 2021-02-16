@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { css } from "@emotion/core";
-import productList from '../../productList';
+import productList from '../../../productList';
 import ItemList from './ItemList';
 
 const override = css`

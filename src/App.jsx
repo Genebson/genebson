@@ -1,28 +1,30 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComponent from './components/navbar';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemListContainer from './components/containers/ItemListContainer/ItemListContainer';
 import ItemCount from './components/counter/ItemCount';
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import ItemDetailContainer from './components/containers/ItemDetailContainer/ItemDetailContainer';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 const App = () => {
 
-  let cantidad = 15
-
-  const handleAdd = (counter) => {
-    return () => {
-      alert(`Se han agregado ${counter} productos`)
-    }
-  }
-
   return (
-    <>
+    <Router>
       <NavbarComponent />
-      <ItemListContainer />
-      <ItemDetailContainer />
-    </>
+      <Switch>
+        <Route exact path='/'>
+          <ItemListContainer />
+        </Route>
+        <Route exact path='category/:id'>
+          <ItemListContainer />
+        </Route>
+        <Route exact path='/item/:productId'>
+          <ItemDetailContainer />
+        </Route>
+        <Route path='*' children={<div>404 Not Found</div>} />
+      </Switch>
+    </Router>
   );
 }
 

@@ -5,7 +5,7 @@ import Add from './add/Add';
 
 const style = {
   margin: '100px auto',
-  width: 300,
+  width: 200,
   height: 150,
   // backgroundColor: 'black',
   boxSizing: 'border-box',
@@ -17,12 +17,12 @@ const upper = {
 }
 
 const lower = {
-  width: '100%',
+  width: 400,
   display: 'flex',
   justifyContent: 'center'
 }
 
-const ItemCount = ({ onAdd, stock, inicial }) => {
+const ItemCount = ({ onAdd, cantidad, inicial }) => {
 
   let [counter, setCounter] = useState(inicial);
 
@@ -30,7 +30,7 @@ const ItemCount = ({ onAdd, stock, inicial }) => {
     return (
       () => {
         let total = (amount < 1) ? 1 : amount; //no puede ser menor a 0
-        let limiter = (total > stock) ? stock : total; //no puede superar el stock
+        let limiter = (total > cantidad) ? cantidad : total; //no puede superar el stock
         setCounter(limiter);
       }
     )
@@ -45,9 +45,9 @@ const ItemCount = ({ onAdd, stock, inicial }) => {
         <Display valor={counter} />
         <Buttons suma={true} onClick={handleClick} {...prop} />
       </div>
-      <div className="lower" style={lower}>
+      {/* <div className="lower" style={lower}>
         <Add onAdd={onAdd} {...{ counter }} />
-      </div>
+      </div> */}
     </div>
   );
 }
