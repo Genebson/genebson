@@ -2,7 +2,6 @@ import Item from '../ItemListContainer/Item';
 import ItemCount from '../../counter/ItemCount';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import './ItemDetail.css';
-import Add from '../../counter/add/Add';
 
 const ItemDetail = ({ counter }) => {
 
@@ -16,11 +15,10 @@ const ItemDetail = ({ counter }) => {
 
   return (
 
-
     <div className="app">
       <div className="details">
         <div className="big-img">
-          <img src="https://i.ibb.co/ZgRVYj9/air1.jpg" />
+          <img src={products.img} />
         </div>
         <div className="box">
           <div className="row">
@@ -41,7 +39,6 @@ const ItemDetail = ({ counter }) => {
             <img src="https://i.ibb.co/ZgRVYj9/air1.jpg" />
             <img src="https://i.ibb.co/ZgRVYj9/air1.jpg" />
           </div>
-          {/* <Button variant="danger" className="btn-cart">Agregar al Carrito</Button> */}
           <Button variant="danger" onClick={handleAdd(counter)}>Agregar al Carrito</Button >
         </div>
       </div>

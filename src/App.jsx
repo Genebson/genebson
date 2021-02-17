@@ -19,7 +19,7 @@ const App = () => {
         <Route exact path='category/:id'>
           <ItemListContainer />
         </Route>
-        <Route exact path='/item/:productId'>
+        <Route exact path='/item/id'>
           <ItemDetailContainer />
         </Route>
         <Route path='*' children={<div>404 Not Found</div>} />

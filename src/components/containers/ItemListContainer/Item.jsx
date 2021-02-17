@@ -2,7 +2,7 @@ import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import React, { useState } from 'react';
 import './Item.css';
 import Notification from '../../notification/Notification';
-import { BrowserRouter as Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // { seAgregoProducto ? <TerminarCompra /> : <AgregarAlCarrito /> }
 
 const Item = ({ detail: { name, img, price, cuotas, cantidad, description, id } }) => {
@@ -33,14 +33,14 @@ const Item = ({ detail: { name, img, price, cuotas, cantidad, description, id } 
               <Card.Text className="card-description">{description}</Card.Text>
               <Card.Title className="card-price">${price}</Card.Title>
               <Card.Text className="card-cuota">{cuotas}</Card.Text>
-              <Link to='/item/:productId'>
+              <Link to={`/item/${id}`}>
                 <Button className="btn-cart" variant="danger" >Detalles</Button>
               </Link>
             </Card.Body>
           </Card>
         </Col>
       </Row>
-    </Container>
+    </Container >
 
   );
 };
