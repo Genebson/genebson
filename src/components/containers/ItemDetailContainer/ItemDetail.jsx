@@ -3,11 +3,11 @@ import ItemCount from '../../counter/ItemCount';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import './ItemDetail.css';
 
-const ItemDetail = ({ counter }) => {
+const ItemDetail = ({ counter, detail }) => {
 
   let cantidad = 15
 
-  const handleAdd = (counter) => {
+  const handleAdd = () => {
     return () => {
       alert(`Se han agregado ${counter} productos`)
     }
@@ -18,13 +18,13 @@ const ItemDetail = ({ counter }) => {
     <div className="app">
       <div className="details">
         <div className="big-img">
-          <img src={products.img} />
+          <img src={detail.img} />
         </div>
         <div className="box">
           <div className="row">
-            <h2>NIKE AIRFORCE 1</h2>
+            <h2>{detail.name}</h2>
             <ItemCount onAdd={handleAdd} cantidad={cantidad} inicial={1} />
-            <span>$550</span>
+            <span>{detail.price}</span>
           </div>
           <div className="colors">
             <Button variant="danger" className="btn-colors"></Button>

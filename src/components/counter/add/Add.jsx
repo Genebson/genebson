@@ -1,10 +1,11 @@
 import { Button } from 'react-bootstrap';
 
 const style = {
-  width: 400,
-  height: 50,
+  // width: 400,
+  // height: 50,
   cursor: 'pointer',
-  marginTop: '10px'
+  marginTop: '360px',
+  marginRight: '00px'
 }
 
 
