@@ -1,15 +1,19 @@
-import Item from '../ItemListContainer/Item';
-import ItemCount from '../../counter/ItemCount';
+import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import ItemCount from '../../counter/ItemCount';
 import './ItemDetail.css';
 
-const ItemDetail = ({ counter, detail }) => {
+const ItemDetail = ({ detail }) => {
+
+  const [seAgregoProducto, setSeAgregoProducto] = useState(false)
 
   let cantidad = 15
 
-  const handleAdd = () => {
+  const handleAdd = (counter) => {
     return () => {
       alert(`Se han agregado ${counter} productos`)
+      setSeAgregoProducto(true)
     }
   }
 
@@ -23,7 +27,7 @@ const ItemDetail = ({ counter, detail }) => {
         <div className="box">
           <div className="row">
             <h2>{detail.name}</h2>
-            <ItemCount onAdd={handleAdd} cantidad={cantidad} inicial={1} />
+            {seAgregoProducto ? <Link to='/cart'><Button>Terminar Compra</Button></Link> : <ItemCount onAdd={handleAdd} cantidad={cantidad} inicial={1} />}
             <span>{detail.price}</span>
           </div>
           <div className="colors">
@@ -32,14 +36,14 @@ const ItemDetail = ({ counter, detail }) => {
             <Button variant="dark" className="btn-colors"></Button>
             <Button variant="warning" className="btn-colors"></Button>
           </div>
-          <p>NIKE SPORTWEAR AIR FORCE PARA MUJER</p>
+          <p>{detail.description}</p>
           <div className="thumb">
-            <img src="https://i.ibb.co/ZgRVYj9/air1.jpg" className="active" />
-            <img src="https://i.ibb.co/ZgRVYj9/air1.jpg" />
-            <img src="https://i.ibb.co/ZgRVYj9/air1.jpg" />
-            <img src="https://i.ibb.co/ZgRVYj9/air1.jpg" />
+            <img src="https://i.ibb.co/5TtD4J1/air2.jpg" className="active" />
+            <img src="https://i.ibb.co/7JrWtp7/air3.jpg" />
+            <img src="https://i.ibb.co/JyfSn6b/air4.jpg" />
+            <img src="https://i.ibb.co/VtgzQRN/air5.jpg" />
           </div>
-          <Button variant="danger" onClick={handleAdd(counter)}>Agregar al Carrito</Button >
+          {/* <Button variant="danger" onClick={handleAdd(counter)}>Agregar al Carrito</Button > */}
         </div>
       </div>
     </div>

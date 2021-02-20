@@ -12,9 +12,9 @@ const NavbarComponent = () => {
         <Nav className="mr-auto nav-menu">
           <Nav.Link href="/">Inicio</Nav.Link>
           <NavDropdown title="Categorías" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="zapatillas">Zapatillas</NavDropdown.Item>
-            <NavDropdown.Item href="buzos">Buzos</NavDropdown.Item>
-            <NavDropdown.Item href="deportes">Deportes</NavDropdown.Item>
+            <NavDropdown.Item href="/category/zapatillas">Zapatillas</NavDropdown.Item>
+            <NavDropdown.Item href="/category/buzos">Buzos</NavDropdown.Item>
+            <NavDropdown.Item href="/category/deportes">Deportes</NavDropdown.Item>
           </NavDropdown>
           <Nav.Link href="#features">Ofertas</Nav.Link>
           <Nav.Link href="#help">Ayuda</Nav.Link>

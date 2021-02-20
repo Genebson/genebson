@@ -16,11 +16,11 @@ const upper = {
   justifyContent: 'space-around'
 }
 
-// const lower = {
-//   width: 400,
-//   display: 'flex',
-//   justifyContent: 'center'
-// }
+const lower = {
+  width: 400,
+  display: 'flex',
+  justifyContent: 'center'
+}
 
 const ItemCount = ({ onAdd, cantidad, inicial }) => {
 
@@ -45,9 +45,9 @@ const ItemCount = ({ onAdd, cantidad, inicial }) => {
         <Display valor={counter} />
         <Buttons suma={true} onClick={handleClick} {...prop} />
       </div>
-      {/* <div className="lower" style={lower}>
+      <div className="lower" style={lower}>
         <Add onAdd={onAdd} {...{ counter }} />
-      </div> */}
+      </div>
     </div>
   );
 }

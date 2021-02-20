@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { css } from "@emotion/core";
 import productList from '../../../productList';
@@ -13,8 +14,8 @@ const override = css`
 
 const ItemListContainer = ({ }) => {
   //el que hago es esto
+  // const { categoryId } = useParams();
   const [products, setProducts] = useState([])
-  // const [isLoading, setIsLoading] = useState([false])
   const [loading, setLoading] = useState(true);
   let [color, setColor] = useState("#36D7B7");
   useEffect(() => {
@@ -31,6 +32,19 @@ const ItemListContainer = ({ }) => {
     });
     //cuando quiero que lo haga es lo que pongo en el array vacío
   }, [])
+
+  // useEffect(() => {
+  //   const filterCategories = new Promise((resolve, reject) => {
+  //     if (categoryId) {
+  //       const products = productList.filter((product) => {
+  //         return product.category.toString() === categoryId;
+  //       });
+  //       resolve(products);
+  //     } else resolve(productList);
+  //   });
+  //   filterCategories.then((result) => setProducts(result));
+  // }, []);
+
   const style = {
     textAlign: 'center',
     marginTop: '150px'
