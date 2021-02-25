@@ -3,10 +3,14 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import ItemCount from '../../counter/ItemCount';
 import './ItemDetail.css';
+import { useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 
 const ItemDetail = ({ detail }) => {
 
   const [seAgregoProducto, setSeAgregoProducto] = useState(false)
+
+  const { addCart, producto } = useContext(CartContext)
 
   let cantidad = 15
 
@@ -14,9 +18,10 @@ const ItemDetail = ({ detail }) => {
     return () => {
       alert(`Se han agregado ${counter} productos`)
       setSeAgregoProducto(true)
+      addCart({ detail: detail, cantidadProductos: counter })
     }
   }
-
+  console.log(producto);
   return (
 
     <div className="app">
@@ -27,7 +32,8 @@ const ItemDetail = ({ detail }) => {
         <div className="box">
           <div className="row">
             <h2>{detail.name}</h2>
-            {seAgregoProducto ? <Link to='/cart'><Button>Terminar Compra</Button></Link> : <ItemCount onAdd={handleAdd} cantidad={cantidad} inicial={1} />}
+            {seAgregoProducto ? <Link to='/cart'><Button variant="success">Terminar Compra <i class="fas fa-check"></i></Button></Link>
+              : <ItemCount onAdd={handleAdd} cantidad={cantidad} inicial={1} />}
             <span>{detail.price}</span>
           </div>
           <div className="colors">

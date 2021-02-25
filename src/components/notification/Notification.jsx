@@ -1,17 +1,9 @@
 import React, { Component } from "react";
-import { MDBNotification } from "mdbreact";
 
 class Notification extends Component {
   render() {
     return (
-      <MDBNotification
-        show
-        fade
-        iconClassName="text-primary"
-        title="Bootstrap"
-        message="Hello, world! This is a toast message."
-        text="11 mins ago"
-      />
+      <></>
     );
   }
 }

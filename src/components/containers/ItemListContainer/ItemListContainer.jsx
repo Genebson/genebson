@@ -33,33 +33,39 @@ const ItemListContainer = ({ }) => {
     //cuando quiero que lo haga es lo que pongo en el array vacío
   }, [])
 
-  // useEffect(() => {
-  //   const filterCategories = new Promise((resolve, reject) => {
-  //     if (categoryId) {
-  //       const products = productList.filter((product) => {
-  //         return product.category.toString() === categoryId;
-  //       });
-  //       resolve(products);
-  //     } else resolve(productList);
-  //   });
-  //   filterCategories.then((result) => setProducts(result));
-  // }, []);
+  useEffect(() => {
+    // conexion a la bd
+    const baseDeDatos = getFirestore();
 
-  const style = {
-    textAlign: 'center',
-    marginTop: '150px'
+    //value.data para traer el documento
+    // Guardamos la referencia de la coleccion que queremos tomar
+    const itemCollection = baseDeDatos.collection('Items')
+    const item = itemCollection.doc(idDdocumento)
+    //Tomando los datos
+    itemCollection.get().then(value => {
+      console.log(value.docs)
+      let aux = value.docs.map(element => {
+        return { ...element.data(), id: element.id }
+      })
+      console.log(aux);
+      setProductos(aux);
+    }, [])
+
+    const style = {
+      textAlign: 'center',
+      marginTop: '150px'
+    }
+    if (loading) {
+      return <>
+        <h1 {...{ style }}>Cargando productos...</h1>
+        <ClimbingBoxLoader color={color} loading={loading} css={override} size={18} />
+      </>
+    }
+    return (
+      <>
+        <ItemList products={products} />
+      </>
+    );
   }
-  if (loading) {
-    return <>
-      <h1 {...{ style }}>Cargando productos...</h1>
-      <ClimbingBoxLoader color={color} loading={loading} css={override} size={18} />
-    </>
-  }
-  return (
-    <>
-      <ItemList products={products} />
-    </>
-  );
-}
 
 export default ItemListContainer;
