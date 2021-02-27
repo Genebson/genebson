@@ -22,9 +22,9 @@ const lower = {
   justifyContent: 'center'
 }
 
-const ItemCount = ({ onAdd, cantidad, inicial }) => {
+const ItemCount = ({ onAdd, cantidad, inicial, counter, setCounter }) => {
 
-  let [counter, setCounter] = useState(inicial);
+  // let [counter, setCounter] = useState(inicial);
 
   const handleClick = (amount) => {
     return (
