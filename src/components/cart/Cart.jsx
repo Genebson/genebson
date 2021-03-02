@@ -8,8 +8,20 @@ const Cart = () => {
     <>
       {producto.map((item, key) => (
         <div key={key}>
-          {item.counter} Nombre del Producto: {item.name}
-          Precio: {item.price}
+          <tr>
+            <td>
+              <img src={item.img} />
+            </td>
+            <td>
+              Cantidad: {item.counter}
+            </td>
+            <td>
+              Nombre del Producto: {item.name}
+            </td>
+            <td>
+              Precio: ${item.price}
+            </td>
+          </tr>
         </div>
       ))}
     </>

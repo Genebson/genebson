@@ -3,10 +3,10 @@ import { createContext, useState, useEffect, useContext } from 'react';
 export const CartContext = createContext() //contexto creado
 export const useCartContext = () => useContext(CartContext)
 
-const CartContextProvider = ({ children }) => { //proveedor(lo que quiero consumir en otros componentes)
+const CartContextProvider = ({ defaultValue = [], children }) => { //proveedor(lo que quiero consumir en otros componentes)
   //Inyecto estados y funciones que voy a usar en mi contexto(createContext)
-
-  const [producto, setProducto] = useState([])
+  const cartLocalStorage = JSON.parse(localStorage.getItem('cart'));
+  const [producto, setProducto] = useState(cartLocalStorage && cartLocalStorage.length > 0 ? cartLocalStorage : defaultValue);
   // console.log(producto, 'producto')
 
   const addCart = cantidadProductos => {
@@ -23,9 +23,7 @@ const CartContextProvider = ({ children }) => { //proveedor(lo que quiero consum
         return [...state, cantidadProductos];
       })
     }
-    console.log(producto, 'producto adentro');
   }
-  console.log(producto, 'producto afuera');
 
   const removeItem = (itemId) => {
     setProducto(producto.filter(prod => prod.item.id !== itemId))

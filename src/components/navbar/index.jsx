@@ -1,27 +1,32 @@
 import "./Navbar.css";
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap';
 import CartWidget from '../cart/CartWidget'
-
+import { Link } from 'react-router-dom';
 const NavbarComponent = () => {
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="/"><img src="images/glogo.png" /></Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto nav-menu">
-          <Nav.Link href="/">Inicio</Nav.Link>
-          <NavDropdown title="Categorías" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="/category/zapatillas">Zapatillas</NavDropdown.Item>
-            <NavDropdown.Item href="/category/buzos">Buzos</NavDropdown.Item>
-            <NavDropdown.Item href="/category/deportes">Deportes</NavDropdown.Item>
-          </NavDropdown>
-          <Nav.Link href="#features">Ofertas</Nav.Link>
-          <Nav.Link href="#help">Ayuda</Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-      <CartWidget />
-    </Navbar>
+      <Link to="/">
+        <Navbar.Brand href="/"><img src="images/glogo.png" /></Navbar.Brand>
+      </Link>
+      <Nav className="mr-auto nav-menu">
+        <Link to="/">
+          <Nav href="/">Inicio</Nav>
+        </Link>
+        <Link to="/category/zapatillas">
+          <Nav>Zapatillas</Nav>
+        </Link>
+        <Link to="/category/buzos">
+          <Nav>Buzos</Nav>
+        </Link>
+        <Link to="/category/deportes">
+          <Nav>Deportes</Nav>
+        </Link>
+        <Nav.Link href="#features">Ofertas</Nav.Link>
+        <Nav.Link href="#help">Ayuda</Nav.Link>
+      </Nav>
+      <NavLink to="/cart"><CartWidget /></NavLink>
+    </Navbar >
   )
 }
 export default NavbarComponent;

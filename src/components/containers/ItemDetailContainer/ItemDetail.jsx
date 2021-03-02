@@ -9,7 +9,7 @@ import { CartContext } from '../../../context/CartContext'
 const ItemDetail = ({ detail, inicial }) => {
 
   const [seAgregoProducto, setSeAgregoProducto] = useState(false)
-  let [counter, setCounter] = useState(inicial);
+  const [counter, setCounter] = useState(1);
   const { addCart, producto } = useContext(CartContext)
 
   let cantidad = 15
@@ -18,7 +18,7 @@ const ItemDetail = ({ detail, inicial }) => {
     return () => {
       alert(`Se han agregado ${counter} productos`)
       setSeAgregoProducto(true)
-      addCart({ id: detail.id, name: detail.name, price: detail.price, cantidadProductos: counter })
+      addCart({ img: detail.img, id: detail.id, name: detail.name, price: detail.price, counter })
     }
   }
   return (
@@ -33,7 +33,7 @@ const ItemDetail = ({ detail, inicial }) => {
             <h2>{detail.name}</h2>
             {seAgregoProducto ? <Link to='/cart'><Button variant="success">Terminar Compra <i class="fas fa-check"></i></Button></Link>
               : <ItemCount onAdd={handleAdd} cantidad={cantidad} inicial={1} counter={counter} setCounter={setCounter} />}
-            <span>{detail.price}</span>
+            <span>${detail.price}</span>
           </div>
           <div className="colors">
             <Button variant="danger" className="btn-colors"></Button>

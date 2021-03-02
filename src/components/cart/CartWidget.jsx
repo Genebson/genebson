@@ -1,8 +1,9 @@
 import "./CartWidget.css";
+import { Link } from 'react-router-dom';
 
 const CartWidget = () => {
   return (
-    <i className="fas fa-shopping-cart"></i>
+    <Link to='/cart'><i className="fas fa-shopping-cart"></i></Link>
   );
 };
 
