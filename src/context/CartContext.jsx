@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect, useContext } from 'react';
-
 export const CartContext = createContext() //contexto creado
 export const useCartContext = () => useContext(CartContext)
 
@@ -7,7 +6,6 @@ const CartContextProvider = ({ defaultValue = [], children }) => { //proveedor(l
   //Inyecto estados y funciones que voy a usar en mi contexto(createContext)
   const cartLocalStorage = JSON.parse(localStorage.getItem('cart'));
   const [producto, setProducto] = useState(cartLocalStorage && cartLocalStorage.length > 0 ? cartLocalStorage : defaultValue);
-  // console.log(producto, 'producto')
 
   const addCart = cantidadProductos => {
     if (producto.find(item => item.id === cantidadProductos.id)) {
@@ -25,8 +23,12 @@ const CartContextProvider = ({ defaultValue = [], children }) => { //proveedor(l
     }
   }
 
+  const totalQuantity = () => {
+    return producto.reduce((prev, next) => (prev + (next.counter)), 0)
+  };
+
   const removeItem = (itemId) => {
-    setProducto(producto.filter(prod => prod.item.id !== itemId))
+    setProducto(producto.filter(prod => prod.id !== itemId.id))
   }
 
   const clear = () => setProducto([])
@@ -37,7 +39,7 @@ const CartContextProvider = ({ defaultValue = [], children }) => { //proveedor(l
 
 
   return (
-    <CartContext.Provider value={{ producto, addCart, removeItem, clear }}>
+    <CartContext.Provider value={{ producto, addCart, removeItem, clear, totalQuantity }}>
       {children}
     </CartContext.Provider>
   )

@@ -14,24 +14,30 @@ const override = css`
 
 const ItemListContainer = ({ }) => {
   //el que hago es esto
-  // const { categoryId } = useParams();
-  const [products, setProducts] = useState([])
+  const { categoryId } = useParams();
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   let [color, setColor] = useState("#36D7B7");
   useEffect(() => {
-    // setIsLoading(true)
-    setLoading(true)
-    const myPromise = new Promise((resolve, reject) => {
-      setTimeout(() => resolve(productList), 2000);
-    });
+    setLoading(true);
+    const myPromise = new Promise((resolve, reject) =>
+      setTimeout(() => {
+        if (categoryId) {
+          const products = productList.filter((producto) => {
+            return producto.category.toString() === categoryId;
+          });
+          resolve(products);
+        } else resolve(productList);
+      }, 3000)
+    );
     myPromise.then((result) => {
       setProducts(result);
-      // setIsLoading(false);
-
       setLoading(false);
     });
     //cuando quiero que lo haga es lo que pongo en el array vacío
-  }, [])
+  }, [categoryId]);
+
+
 
   // useEffect(() => {
   //   // conexion a la bd
@@ -55,15 +61,21 @@ const ItemListContainer = ({ }) => {
     textAlign: 'center',
     marginTop: '150px'
   }
-  if (loading) {
-    return <>
-      <h1 {...{ style }}>Cargando productos...</h1>
-      <ClimbingBoxLoader color={color} loading={loading} css={override} size={18} />
-    </>
-  }
   return (
     <>
-      <ItemList products={products} />
+      {loading ? (
+        <>
+          <h1 {...{ style }}>Cargando productos...</h1>
+          <ClimbingBoxLoader
+            color={color}
+            loading={loading}
+            css={override}
+            size={18}
+          />
+        </>
+      ) : (
+          <ItemList products={products} />
+        )}
     </>
   );
 }

@@ -23,7 +23,6 @@ const NavbarComponent = () => {
           <Nav>Deportes</Nav>
         </Link>
         <Nav.Link href="#features">Ofertas</Nav.Link>
-        <Nav.Link href="#help">Ayuda</Nav.Link>
       </Nav>
       <NavLink to="/cart"><CartWidget /></NavLink>
     </Navbar >
