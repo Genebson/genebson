@@ -22,7 +22,6 @@ const NavbarComponent = () => {
         <Link to="/category/deportes">
           <Nav>Deportes</Nav>
         </Link>
-        <Nav.Link href="#features">Ofertas</Nav.Link>
       </Nav>
       <NavLink to="/cart"><CartWidget /></NavLink>
     </Navbar >

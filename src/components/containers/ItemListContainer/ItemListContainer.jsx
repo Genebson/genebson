@@ -4,6 +4,7 @@ import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { css } from "@emotion/core";
 import productList from '../../../productList';
 import ItemList from './ItemList';
+import { getFirestore } from '../../../firebase/firebase'
 
 const override = css`
   display: block;
@@ -37,25 +38,25 @@ const ItemListContainer = ({ }) => {
     //cuando quiero que lo haga es lo que pongo en el array vacío
   }, [categoryId]);
 
+  useEffect(() => {
+    //   conexion a la bd
+    const baseDeDatos = getFirestore();
+    const itemCollection = baseDeDatos.collection('ITEMS')
+    //   value.data para traer el documento
+    //   Guardamos la referencia de la coleccion que queremos tomar
 
-
-  // useEffect(() => {
-  //   // conexion a la bd
-  //   const baseDeDatos = getFirestore();
-
-  //   //value.data para traer el documento
-  //   // Guardamos la referencia de la coleccion que queremos tomar
-  //   const itemCollection = baseDeDatos.collection('Items')
-  //   const item = itemCollection.doc(idDdocumento)
-  //   //Tomando los datos
-  //   itemCollection.get().then(value => {
-  //     console.log(value.docs)
-  //     let aux = value.docs.map(element => {
-  //       return { ...element.data(), id: element.id }
-  //     })
-  //     console.log(aux);
-  //     setProductos(aux);
-  //   }, [])
+    //   Tomando los datos
+    itemCollection.get().then(value => {
+      let aux = value.docs.map(async (element) => {
+        const CategoryID = baseDeDatos.collection('CATEGORY')
+        let auxCategoryID = await CategoryID.doc(element.data().categoryID).get()
+        // console.log(auxCategoryID.data());
+        return { ...element.data(), categoria: auxCategoryID.data() }
+      })
+      console.log(aux)
+      setProducts(aux)
+    })
+  }, [])
 
   const style = {
     textAlign: 'center',
@@ -74,8 +75,8 @@ const ItemListContainer = ({ }) => {
           />
         </>
       ) : (
-          <ItemList products={products} />
-        )}
+        <ItemList products={products} />
+      )}
     </>
   );
 }

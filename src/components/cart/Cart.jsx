@@ -5,15 +5,7 @@ import "./Cart.css";
 
 const Cart = () => {
 
-  const { producto, removeItem, clear } = useCartContext()
-
-  const totalFinal = producto.reduce((prev, next) => {
-    return prev + (next.counter * next.price)
-  }, 0)
-
-  // const handleRemoveItem = () => {
-  //   removeItem(producto.item.id);
-  // }
+  const { producto, removeItem, clear, totalFinal } = useCartContext()
 
   return (
     producto.length === 0 ?
@@ -48,9 +40,6 @@ const Cart = () => {
               <h2 className="text-center">Su carrito</h2>
             </div>
             <div className="col-1 d-flex align-items-center justify-content-center">
-              {/* <button type="button" className="close" onClick={() => setCartModal(false)}>
-                <span>&times;</span>
-              </button> */}
             </div>
           </div>
         </div>
@@ -84,7 +73,7 @@ const Cart = () => {
           </div>
           <div className="row justify-content-end">
             <button className="btn btn-secondary mr-1" onClick={() => clear()}>Vaciar Carrito</button>
-            <Button variant="danger">Ir a Checkout</Button>
+            <Link to='/checkout'><Button variant="danger">Ir al Checkout</Button></Link>
           </div>
         </div>
       </div>

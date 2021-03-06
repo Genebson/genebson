@@ -4,8 +4,8 @@ export const useCartContext = () => useContext(CartContext)
 
 const CartContextProvider = ({ defaultValue = [], children }) => { //proveedor(lo que quiero consumir en otros componentes)
   //Inyecto estados y funciones que voy a usar en mi contexto(createContext)
-  const cartLocalStorage = JSON.parse(localStorage.getItem('cart'));
-  const [producto, setProducto] = useState(cartLocalStorage && cartLocalStorage.length > 0 ? cartLocalStorage : defaultValue);
+  // const cartLocalStorage = JSON.parse(localStorage.getItem('cart'));
+  const [producto, setProducto] = useState(defaultValue);
 
   const addCart = cantidadProductos => {
     if (producto.find(item => item.id === cantidadProductos.id)) {
@@ -23,23 +23,54 @@ const CartContextProvider = ({ defaultValue = [], children }) => { //proveedor(l
     }
   }
 
-  const totalQuantity = () => {
-    return producto.reduce((prev, next) => (prev + (next.counter)), 0)
-  };
-
   const removeItem = (itemId) => {
     setProducto(producto.filter(prod => prod.id !== itemId.id))
   }
 
   const clear = () => setProducto([])
 
+  const totalQuantity = () => {
+    return producto.reduce((prev, next) => (prev + (next.counter)), 0)
+  };
+
+  //Cart y Checkout
+  const totalFinal = producto.reduce((prev, next) => {
+    return prev + (next.counter * next.price)
+  }, 0)
+
+  //Checkout
+  const [ordenID, setOrdenID] = useState();
+  const [comprador, setComprador] = useState({ nombre: '', email: '', direccion: '', telefono: '' })
+
+  useEffect(() => {
+    if (localStorage.getItem('cart') !== null) {
+      setProducto(JSON.parse(localStorage.getItem('cart')))
+      console.log(localStorage.getItem('cart'));
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(producto))
+  }, [producto])
+
   // const isInCart = (id) => {
   //   return producto.findIndex(prod => prod.id === id)
   // }
 
-
   return (
-    <CartContext.Provider value={{ producto, addCart, removeItem, clear, totalQuantity }}>
+    <CartContext.Provider value={{
+      producto,
+      setProducto,
+      addCart,
+      removeItem,
+      clear,
+      totalQuantity,
+      totalFinal,
+      ordenID,
+      setOrdenID,
+      comprador,
+      setComprador
+    }}>
       {children}
     </CartContext.Provider>
   )
