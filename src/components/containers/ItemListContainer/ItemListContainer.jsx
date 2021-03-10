@@ -19,44 +19,50 @@ const ItemListContainer = ({ }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   let [color, setColor] = useState("#36D7B7");
+
   useEffect(() => {
     setLoading(true);
-    const myPromise = new Promise((resolve, reject) =>
-      setTimeout(() => {
-        if (categoryId) {
-          const products = productList.filter((producto) => {
-            return producto.category.toString() === categoryId;
-          });
-          resolve(products);
-        } else resolve(productList);
-      }, 3000)
-    );
-    myPromise.then((result) => {
-      setProducts(result);
+    const baseDeDatos = getFirestore();
+    let docRef;
+    if (categoryId) {
+      docRef = baseDeDatos.collection("ITEMS").where("CATEGORY", "==", categoryId);
+    } else {
+      docRef = baseDeDatos.collection("ITEMS");
+    }
+    docRef.get().then((querySnapshot) => {
+      if (querySnapshot.size === 0) {
+        console.log("No existen resultados");
+      }
+      setProducts(
+        querySnapshot.docs.map((element) => ({
+          ...element.data(),
+          id: element.id
+        }))
+      );
       setLoading(false);
     });
-    //cuando quiero que lo haga es lo que pongo en el array vacío
+    console.log(categoryId);
   }, [categoryId]);
+  //cuando quiero que lo haga es lo que pongo en el array vacío
+  // useEffect(() => {
+  //   //   conexion a la bd
+  //   const baseDeDatos = getFirestore();
+  //   const itemCollection = baseDeDatos.collection('ITEMS')
+  //   //   value.data para traer el documento
+  //   //   Guardamos la referencia de la coleccion que queremos tomar
 
-  useEffect(() => {
-    //   conexion a la bd
-    const baseDeDatos = getFirestore();
-    const itemCollection = baseDeDatos.collection('ITEMS')
-    //   value.data para traer el documento
-    //   Guardamos la referencia de la coleccion que queremos tomar
-
-    //   Tomando los datos
-    itemCollection.get().then(value => {
-      let aux = value.docs.map(async (element) => {
-        const CategoryID = baseDeDatos.collection('CATEGORY')
-        let auxCategoryID = await CategoryID.doc(element.data().categoryID).get()
-        // console.log(auxCategoryID.data());
-        return { ...element.data(), categoria: auxCategoryID.data() }
-      })
-      console.log(aux)
-      setProducts(aux)
-    })
-  }, [])
+  //   //   Tomando los datos
+  //   itemCollection.get().then(value => {
+  //     let aux = value.docs.map(async (element) => {
+  //       const CategoryID = baseDeDatos.collection('CATEGORY')
+  //       let auxCategoryID = await CategoryID.doc(element.data().categoryID).get()
+  //       // console.log(auxCategoryID.data());
+  //       return { ...element.data(), categoria: auxCategoryID.data() }
+  //     })
+  //     console.log(aux)
+  //     setProducts(aux)
+  //   })
+  // }, [])
 
   const style = {
     textAlign: 'center',

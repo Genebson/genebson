@@ -1,9 +1,8 @@
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useState } from 'react';
 import './Item.css';
-import Notification from '../../notification/Notification';
 import { Link } from 'react-router-dom';
-// { seAgregoProducto ? <TerminarCompra /> : <AgregarAlCarrito /> }
 
 const Item = ({ detail: { name, img, price, cuotas, cantidad, description, id } }) => {
 
@@ -20,7 +19,7 @@ const Item = ({ detail: { name, img, price, cuotas, cantidad, description, id } 
 
     <Container>
       <Row>
-        <Col lg={8}>
+        <Col className="lg-4">
           <Card style={{ width: '20rem' }}>
             <div onClick={handleClick}>
               <a href="#"><i onClick={preventJump} className={click ? 'fas fa-heart' : 'far fa-heart'} ></i></a>
@@ -41,7 +40,6 @@ const Item = ({ detail: { name, img, price, cuotas, cantidad, description, id } 
         </Col>
       </Row>
     </Container >
-
   );
 };
 

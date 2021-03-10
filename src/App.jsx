@@ -8,6 +8,7 @@ import Cart from './components/cart/Cart';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Checkout from './components/checkout/Checkout';
 import ConfirmarOrden from './components/confirmarorden/ConfirmarOrden';
+import Favorites from './components/favorites/Favorites'
 
 const App = () => {
 
@@ -27,6 +28,9 @@ const App = () => {
           </Route>
           <Route exact path='/cart'>
             <Cart />
+          </Route>
+          <Route exact path='/favorites'>
+            <Favorites />
           </Route>
           <Route exacth path='/checkout'>
             <Checkout />

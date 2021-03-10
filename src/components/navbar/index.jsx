@@ -2,6 +2,8 @@ import "./Navbar.css";
 import { Nav, Navbar, NavDropdown, NavLink } from 'react-bootstrap';
 import CartWidget from '../cart/CartWidget'
 import { Link } from 'react-router-dom';
+import FavoritesWidget from '../favorites/FavoritesWidget'
+
 const NavbarComponent = () => {
 
   return (
@@ -23,6 +25,7 @@ const NavbarComponent = () => {
           <Nav>Deportes</Nav>
         </Link>
       </Nav>
+      <NavLink to="/favorites"><FavoritesWidget /></NavLink>
       <NavLink to="/cart"><CartWidget /></NavLink>
     </Navbar >
   )
