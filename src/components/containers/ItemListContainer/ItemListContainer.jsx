@@ -25,7 +25,9 @@ const ItemListContainer = ({ }) => {
     const baseDeDatos = getFirestore();
     let docRef;
     if (categoryId) {
-      docRef = baseDeDatos.collection("ITEMS").where("CATEGORY", "==", categoryId);
+      docRef = baseDeDatos
+        .collection("ITEMS")
+        .where("categoryID", "==", categoryId);
     } else {
       docRef = baseDeDatos.collection("ITEMS");
     }
@@ -41,6 +43,7 @@ const ItemListContainer = ({ }) => {
       );
       setLoading(false);
     });
+    console.log(docRef)
     console.log(categoryId);
   }, [categoryId]);
   //cuando quiero que lo haga es lo que pongo en el array vacío
